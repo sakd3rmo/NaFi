@@ -1,0 +1,6 @@
+Flask
+cryptography
+pyunpack
+patool
+python-dotenv
+pexpect
