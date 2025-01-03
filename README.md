@@ -25,9 +25,9 @@ Run the following command to install all required dependencies:
 pip install -r requirements.txt
 ```
 
-### 2. Create Static Folder and `.env` File
+### 2. Create `Static Folder` and `.env` File
 
-Static Folder
+In the `NaFi` folder, create `Static Folder`
 
 ```
 mkdir -p static/uploads static/processed
