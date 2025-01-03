@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaFi</title>
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/lock-icon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1b2836;
+            color: #fff;
+            margin: 0;
+            padding: 75px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #2c3e50;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd; 
+            border-radius: 5px; 
+            box-sizing: border-box; 
+        }
+
+        button {
+            background: #1abc9c;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #16a085;
+        }
+
+        footer {
+            text-align: center; 
+            margin-top: 20px;   
+            color: #fff;      
+        }
+
+        footer a {
+            color: #1abc9c;    
+            text-decoration: none; 
+        }
+
+        footer a:hover {
+            text-decoration: underline; 
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>NaFi</h1>
+
+    <form action="/process" method="POST" enctype="multipart/form-data">
+        <!-- Select Files -->
+        <label for="files">Select Files</label>
+        <input type="file" name="files" id="files" required multiple>
+
+        <!-- Select Password -->
+        <label for="password_option">Select Password</label>
+        <select name="password_option" id="password_option" required>
+            <option value="manual">Manual</option>
+            <option value="auto">Automatic</option>
+        </select>
+
+	<!-- Enter Password -->
+	<div id="manual_password_input">
+    	    <label for="password">Enter Password</label>
+            <div style="position: relative;">
+                <input type="password" name="password" id="password" required style="padding-right: 40px;">
+                <span id="toggle_password" style="
+                     position: absolute;
+                     right: 10px;
+                     top: 35%;
+                     transform: translateY(-50%);
+                     cursor: pointer;
+                " title="Show/Hide Password">🔒</span>
+    	    </div>
+        </div>
+
+        <!-- Generate Password -->
+        <div id="auto_password_generate" class="hidden">
+            <button type="button" onclick="generatePassword()">Generate Password</button>
+            <p id="generated_password" style="margin-top: 10px; font-size: 1rem; font-weight: bold;"></p>
+        </div>
+
+        <!-- Select Action -->
+        <label for="action">Select Action</label>
+        <select name="action" id="action" required>
+            <option value="encrypt">Encrypt</option>
+            <option value="decrypt">Decrypt</option>
+        </select>
+
+        <!-- Select Results -->
+        <label for="result">Select Results</label>
+        <select name="result" id="result" required>
+            <option value="download">Download</option>
+            <option value="upload">Upload to NAS</option>
+        </select>
+
+        <!-- Input NAS (Hidden by Default) -->
+        <div id="nas_options" class="hidden">
+            <label for="nas_username">NAS Username</label>
+            <input type="text" name="nas_username" id="nas_username">
+
+            <label for="nas_password">NAS Password</label>
+            <div style="position: relative;">
+                <input type="password" name="nas_password" id="nas_password" style="padding-right: 40px;">
+                <span id="toggle_nas_password" style="
+                     position: absolute;
+                     right: 10px;
+                     top: 35%;
+                     transform: translateY(-50%);
+                     cursor: pointer;
+                " title="Show/Hide Password">🔒</span>
+            </div>
+
+            <label for="nas_destination">NAS Directory Destination</label>
+            <input type="text" id="nas_destination" name="nas_destination" placeholder="/volume1/directory_destination">
+
+        </div>
+
+        <!-- Submit Button-->
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<footer>
+    &copy; 2024 NaFi - Created by <a href="https://github.com/sakd3rmo">Sakd3rmo</a>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
