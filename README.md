@@ -2,6 +2,8 @@
 
 NaFi is a tool designed to improve data security through file randomization. By systematically changing the structure and naming of files, NaFi protects sensitive information from unauthorized access.
 
+![Gambar Contoh](Example/NaFi.png)
+
 ---
 
 ## Requirements
